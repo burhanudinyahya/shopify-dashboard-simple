@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTable, useFilters, useSortBy } from "react-table";
 
-export default function Table({ columns, data }) {
+export default function Table({ columns, data } : {columns: any, data: any}) {
   const [filterInput, setFilterInput] = useState("");
   const {
     getTableProps,
