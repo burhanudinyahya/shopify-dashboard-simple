@@ -19,7 +19,7 @@ export default function Table({ columns, data } : {columns: any, data: any}) {
     useSortBy
   );
 
-  const handleFilterChange = e => {
+  const handleFilterChange = (e: any) => {
     const value = e.target.value || undefined;
     setFilter("title", value);
     setFilterInput(value);
