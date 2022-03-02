@@ -21,7 +21,7 @@ export default function Table({ columns, data }) {
 
   const handleFilterChange = e => {
     const value = e.target.value || undefined;
-    setFilter("show.name", value);
+    setFilter("title", value);
     setFilterInput(value);
   };
 
@@ -35,10 +35,11 @@ export default function Table({ columns, data }) {
       />
       <table {...getTableProps()}>
         <thead>
-          {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
+          {headerGroups.map((headerGroup: any, headerGroupKey: number) => (
+            <tr key={headerGroupKey} {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column:any, columnKey: number) => (
                 <th
+                  key={columnKey}
                   {...column.getHeaderProps(column.getSortByToggleProps())}
                   className={
                     column.isSorted
@@ -55,13 +56,13 @@ export default function Table({ columns, data }) {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.map((row, i) => {
+          {rows.map((row: any, i: number) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
+              <tr key={i} {...row.getRowProps()}>
+                {row.cells.map((cell: any, j: number) => {
                   return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                    <td key={j} {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   );
                 })}
               </tr>
